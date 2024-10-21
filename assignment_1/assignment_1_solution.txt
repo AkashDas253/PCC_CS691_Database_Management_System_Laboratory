@@ -1,0 +1,70 @@
+-- Create EMP table
+CREATE TABLE EMP (
+    EMPNO NUMBER PRIMARY KEY,
+    ENAME VARCHAR2(50),
+    JOB CHAR(10),
+    MGR NUMBER,
+    HIREDATE DATE,
+    SAL NUMBER,
+    COMM NUMBER,
+    DEPTNO NUMBER
+);
+
+-- Create DEPT table
+CREATE TABLE DEPT (
+    DEPTNO NUMBER PRIMARY KEY,
+    DNAME VARCHAR2(50),
+    LOC VARCHAR2(50)
+);
+
+-- Insert data into EMP table
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7369, 'Smith', 'Clerk', 7902, TO_DATE('17/12/80', 'DD/MM/YY'), 800, NULL, 20);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7499, 'Allen', 'Salesman', 7698, TO_DATE('20/2/81', 'DD/MM/YY'), 1600, 300, 30);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7521, 'Ward', 'Salesman', 7698, TO_DATE('22/2/81', 'DD/MM/YY'), 1250, 500, 30);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7566, 'Jones', 'Manager', 7839, TO_DATE('2/4/81', 'DD/MM/YY'), 2975, NULL, 20);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7654, 'Martin', 'Salesman', 7698, TO_DATE('28/9/81', 'DD/MM/YY'), 1250, 1400, 30);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7698, 'Blake', 'Manager', 7839, TO_DATE('1/5/81', 'DD/MM/YY'), 2850, NULL, 30);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7782, 'Clark', 'Manager', 7839, TO_DATE('9/6/81', 'DD/MM/YY'), 2450, NULL, 10);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7788, 'Scott', 'Analyst', 7566, TO_DATE('9/12/82', 'DD/MM/YY'), 3000, NULL, 20);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7839, 'King', 'President', NULL, TO_DATE('17/11/81', 'DD/MM/YY'), 5000, NULL, 10);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7844, 'Turner', 'Salesman', 7698, TO_DATE('8/9/81', 'DD/MM/YY'), 1500, 0, 30);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7876, 'Adams', 'Clerk', 7788, TO_DATE('12/1/83', 'DD/MM/YY'), 1100, NULL, 20);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7900, 'James', 'Clerk', 7698, TO_DATE('3/12/81', 'DD/MM/YY'), 950, NULL, 30);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7902, 'Ford', 'Analyst', 7566, TO_DATE('4/12/81', 'DD/MM/YY'), 3000, NULL, 20);
+INSERT INTO EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) VALUES (7934, 'Miller', 'Clerk', 7782, TO_DATE('23/1/82', 'DD/MM/YY'), 1300, NULL, 10);
+
+-- Insert data into DEPT table
+INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (10, 'Accounting', 'New York');
+INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (20, 'Research', 'Dallas');
+INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (30, 'Sales', 'Chicago');
+INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'Operations', 'Boston');
+
+-- Display all records in the EMP table
+SELECT * FROM EMP;
+
+-- Display all employees who are working as managers
+SELECT * FROM EMP WHERE JOB = 'Manager';
+
+-- Display the detail of employee with employee no. 7369
+SELECT * FROM EMP WHERE EMPNO = 7369;
+
+-- Display all employees who joined on 1st May, 1981
+SELECT * FROM EMP WHERE HIREDATE = '01-MAY-1981';
+
+-- Display all employees with salary greater than Rs.1500/-
+SELECT * FROM EMP WHERE SAL > 1500;
+
+-- Display all employees who are not getting any commission
+SELECT * FROM EMP WHERE COMM IS NULL;
+
+-- Display all employees whose names are starting with “A”
+SELECT * FROM EMP WHERE ENAME LIKE 'A%';
+
+-- Add a new attribute Phone No.
+ALTER TABLE EMP ADD (PHONE_NO VARCHAR2(15));
+
+-- Change the data type of attribute Job from char to varchar2
+ALTER TABLE EMP MODIFY (JOB VARCHAR2(10));
+
+-- Remove the attribute Phone No. from the table
+ALTER TABLE EMP DROP COLUMN PHONE_NO;

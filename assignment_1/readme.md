@@ -1,10 +1,72 @@
-# Database Management System Lab
-
-## Concepts and Lessons:
+#  **Assignment 1**
 
 
+> **Title:** Creation, modification, deletion of table and insertion of data into table.
+> 
+> **Objective:** 
+> - To understand how to create a table schema with data types and constraints.
+> - To learn insertion of data into a table.
+> 
+> **The Assignment Covers the Course Outcome:** CO-2
+> 
+> **Bloom's Cognitive Domain:** Apply, Infer
 
-## Assignment 1:
+## **Theory :**
+
+### **Create Table:** Used for creation of a table schema.
+
+```sql
+CREATE TABLE <table_name>(
+<column name> <datatype>[(<size>)] [<constraint>],
+<column name> <datatype>[(<size>)] [<constraint>],
+<column name> <datatype>[(<size>)] [<constraint>]
+);
+```
+
+### **Alter Table:** Used for adding, modifying or deleting column(s) of a table.
+
+- **Adding column(s)**
+
+    ```sql
+    ALTER TABLE <table_name> ADD (
+        <column name> <datatype>[(<size>)] [<constraint>],
+        <column name> <datatype>[(<size>)] [<constraint>],
+        <column name> <datatype>[(<size>)] [<constraint>]
+    );
+    ```
+
+- **Modifying existing column(s)**
+
+    ```sql
+    ALTER TABLE <table_name> MODIFY (
+        <column name> <datatype>[(<size>)] [<constraint>],
+        <column name> <datatype>[(<size>)] [<constraint>],
+        <column name> <datatype>[(<size>)] [<constraint>]
+    );
+    ```
+
+### **Removing existing column**
+
+  ```sql
+  ALTER TABLE <table_name> DROP COLUMN <column_name>;
+  ```
+
+### **Insert into Table:** Used for insertion of data into a table.
+
+- **For all columns**
+
+    ```sql
+    INSERT INTO <table_name> VALUES (<value1>, <value2>, <value3>);
+    ```
+
+- **For specific columns**
+
+    ```sql
+    INSERT INTO <table_name> (<column_name1>, <column_name2>, <column_name3>)
+    VALUES (<value1>, <value2>, <value3>);
+    ```
+
+## **Assignment  and Solutions:**
 
 ### Create the following tables:
 
@@ -141,3 +203,14 @@
     ```sql
     ALTER TABLE EMP DROP COLUMN PHONE_NO;
     ```
+
+
+## Discussions:
+In SQL, creating tables involves defining structures with attributes and data types. Modifying tables uses commands like `ALTER TABLE` to add or modify columns. Deleting tables employs `DROP TABLE`. Inserting data uses `INSERT INTO`, specifying values or fetching from another table. These operations are fundamental for database management, ensuring schema flexibility and efficient data handling.
+
+## Questionnaire:
+1. **Which table should you create first? - Explain.**
+   - As the DEPT table is the foreign key in the EMP table by attribute DEPTNO, which is a primary key of the DEPT table and a foreign key in the EMP table, the DEPT table should be created first.
+
+2. **Explain if any constraint is required to be specified for the attribute JOB.**
+   - The JOB column must not have any empty cells, i.e., it should not be NULL. We can use the `CHECK` constraint to ensure that only certain values are allowed for the JOB attribute, such as 'Salesman', 'Clerk', 'Manager', or 'Analyst'.
